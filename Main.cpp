@@ -1,9 +1,8 @@
 //[C/C++ game] very simple google dinosaur. (by. BlockDMask)
-//¾È³çÇÏ¼¼¿ä. BlockDMask ÀÔ´Ï´Ù.
-//»ç¿ëÇÏ½Ç¶© ²À ÃâÃ³¸¦ ³²°ÜÁÖ¼¼¿ä. 
-//ºí·Î±× : https://blockdmask.tistory.com/344
-//ÀÎ½ºÅ¸ : https://www.instagram.com/blockdmask/
-//¸¹Àº ºí·Î±× ¹æ¹®, ÀÎ½ºÅ¸±×·¥ ÆÈ·Î¿ì ºÎÅ¹µå¸³´Ï´Ù. °¨»çÇÕ´Ï´Ù.
+//ì•ˆë…•í•˜ì„¸ìš”. BlockDMask ì…ë‹ˆë‹¤.
+//ì‚¬ìš©í•˜ì‹¤ë• ê¼­ ì¶œì²˜ë¥¼ ë‚¨ê²¨ì£¼ì„¸ìš”. 
+//ë¸”ë¡œê·¸ : https://blockdmask.tistory.com/344
+
 #include<stdio.h>
 #include<windows.h>
 #include<conio.h>
@@ -11,14 +10,14 @@
 #define TREE_BOTTOM_Y 20
 #define TREE_BOTTOM_X 45
 
-//ÄÜ¼Ö Ã¢ÀÇ Å©±â¿Í Á¦¸ñÀ» ÁöÁ¤ÇÏ´Â ÇÔ¼ö
+//ì½˜ì†” ì°½ì˜ í¬ê¸°ì™€ ì œëª©ì„ ì§€ì •í•˜ëŠ” í•¨ìˆ˜
 void SetConsoleView()
 {
 	system("mode con:cols=100 lines=25");
 	system("title Google Dinosaurs. By BlockDMask.");
 }
 
-//Ä¿¼­ÀÇ À§Ä¡¸¦ x, y·Î ÀÌµ¿ÇÏ´Â ÇÔ¼ö
+//ì»¤ì„œì˜ ìœ„ì¹˜ë¥¼ x, yë¡œ ì´ë™í•˜ëŠ” í•¨ìˆ˜
 void GotoXY(int x, int y)
 {
 	COORD Pos;
@@ -27,7 +26,7 @@ void GotoXY(int x, int y)
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
 }
 
-//Å°º¸µåÀÇ ÀÔ·ÂÀ» ¹Ş°í, ÀÔ·ÂµÈ Å°ÀÇ °ªÀ» ¹İÈ¯ÇÏ´Â ÇÔ¼ö
+//í‚¤ë³´ë“œì˜ ì…ë ¥ì„ ë°›ê³ , ì…ë ¥ëœ í‚¤ì˜ ê°’ì„ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜
 int GetKeyDown()
 {
 	if (_kbhit() != 0)
@@ -37,7 +36,7 @@ int GetKeyDown()
 	return 0;
 }
 
-//°ø·æÀ» ±×¸®´Â ÇÔ¼ö
+//ê³µë£¡ì„ ê·¸ë¦¬ëŠ” í•¨ìˆ˜
 void DrawDino(int dinoY)
 {
 	GotoXY(0, dinoY);
@@ -67,7 +66,7 @@ void DrawDino(int dinoY)
 	}
 }
 
-//³ª¹«¸¦ ±×¸®´Â ÇÔ¼ö
+//ë‚˜ë¬´ë¥¼ ê·¸ë¦¬ëŠ” í•¨ìˆ˜
 void DrawTree(int treeX)
 {
 	GotoXY(treeX, TREE_BOTTOM_Y);
@@ -95,14 +94,14 @@ int main()
 
 	while (true)
 	{
-		//zÅ°°¡ ´­·È°í, ¹Ù´ÚÀÌ ¾Æ´Ò¶§ Á¡ÇÁ
+		//zí‚¤ê°€ ëˆŒë ¸ê³ , ë°”ë‹¥ì´ ì•„ë‹ë•Œ ì í”„
 		if (GetKeyDown() == 'z' && isBottom)
 		{
 			isJumping = true;
 			isBottom = false;
 		}
 
-		//Á¡ÇÁÁßÀÌ¶ó¸é Y¸¦ °¨¼Ò, Á¡ÇÁ°¡ ³¡³µÀ¸¸é Y¸¦ Áõ°¡.
+		//ì í”„ì¤‘ì´ë¼ë©´ Yë¥¼ ê°ì†Œ, ì í”„ê°€ ëë‚¬ìœ¼ë©´ Yë¥¼ ì¦ê°€.
 		if (isJumping)
 		{
 			dinoY -= gravity;
@@ -112,22 +111,22 @@ int main()
 			dinoY += gravity;
 		}
 
-		//Y°¡ °è¼ÓÇØ¼­ Áõ°¡ÇÏ´Â°É ¸·±âÀ§ÇØ ¹Ù´ÚÀ» ÁöÁ¤.
+		//Yê°€ ê³„ì†í•´ì„œ ì¦ê°€í•˜ëŠ”ê±¸ ë§‰ê¸°ìœ„í•´ ë°”ë‹¥ì„ ì§€ì •.
 		if (dinoY >= DINO_BOTTOM_Y)
 		{
 			dinoY = DINO_BOTTOM_Y;
 			isBottom = true;
 		}
 
-		//³ª¹«°¡ ¿ŞÂÊÀ¸·Î (xÀ½¼ö) °¡µµ·ÏÇÏ°í
-		//³ª¹«ÀÇ À§Ä¡°¡ ¿ŞÂÊ ³¡À¸·Î°¡¸é ´Ù½Ã ¿À¸¥ÂÊ ³¡À¸·Î ¼ÒÈ¯.
+		//ë‚˜ë¬´ê°€ ì™¼ìª½ìœ¼ë¡œ (xìŒìˆ˜) ê°€ë„ë¡í•˜ê³ 
+		//ë‚˜ë¬´ì˜ ìœ„ì¹˜ê°€ ì™¼ìª½ ëìœ¼ë¡œê°€ë©´ ë‹¤ì‹œ ì˜¤ë¥¸ìª½ ëìœ¼ë¡œ ì†Œí™˜.
 		treeX -= 2;
 		if (treeX <= 0)
 		{
 			treeX = TREE_BOTTOM_X;
 		}
 
-		//Á¡ÇÁÀÇ ¸ÇÀ§¸¦ ÂïÀ¸¸é Á¡ÇÁ°¡ ³¡³­ »óÈ².
+		//ì í”„ì˜ ë§¨ìœ„ë¥¼ ì°ìœ¼ë©´ ì í”„ê°€ ëë‚œ ìƒí™©.
 		if (dinoY <= 3)
 		{
 			isJumping = false;
