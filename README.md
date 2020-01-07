@@ -1,5 +1,6 @@
 # Google_Dino
 C lang, google dinosaur game
+URL : https://blockdmask.tistory.com/344
     
 
 ### v1.0 main.cpp
